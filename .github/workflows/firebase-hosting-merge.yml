@@ -12,6 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build
+      - run: |
+          echo "=== PROJECT ROOT ==="
+          ls -la
+
+          echo "=== DIST ==="
+          ls -la dist || true
+
+          echo "=== BUILD ==="
+          ls -la build || true
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
